@@ -20,7 +20,5 @@ def heap_sort(lst, n):
         swap_in_heap(lst, i, 0)
 
 
-A = [10, 7, 8, 11, 5, 4, 1, 2, 2]
-heap_sort(A, 8)
-print(A)
+
 
