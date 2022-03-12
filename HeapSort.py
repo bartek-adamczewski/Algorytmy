@@ -1,3 +1,4 @@
+
 def swap_in_heap(lst, n, i):
     largest = i                 # indeks rodzica
     lchild = i*2 + 1            # indeks lewego dziecka
