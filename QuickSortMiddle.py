@@ -31,3 +31,4 @@ def partition(lst, start, end):
 
 def sort(lst):
     return quick_sort(lst, 0, len(lst) - 1)
+
