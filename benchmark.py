@@ -6,8 +6,8 @@ from CountSort import count_sort
 from HeapSort import heap_sort
 from InsertionSort import insertion_sort
 from MergeSort import merge_sort
-from QuickSortMiddle import sort as quick_sort_middle
-from QuickSortLast import quick_sort
+from QuickSortMiddle import quick_sort as quick_sort_middle
+from QuickSortLast import quick_sort as quick_sort_last
 from SelectionSort import selection_sort
 
 
@@ -33,8 +33,9 @@ def benchmark():
     benchmark_sort("merge sort", merge_sort, number_of_runs)
     benchmark_sort("heap sort", heap_sort, number_of_runs)
     benchmark_sort("quick sort middle", quick_sort_middle, number_of_runs)
-    benchmark_sort("quick sort last", quick_sort, number_of_runs)
+    benchmark_sort("quick sort last", quick_sort_last, number_of_runs)
     benchmark_sort("counting sort", count_sort, number_of_runs)
+
 
 
 if __name__ == "__main__":

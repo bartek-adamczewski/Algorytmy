@@ -1,34 +1,28 @@
-
-def quick_sort(lst, start, end):
-    if start < end:
-        pivot = partition(lst, start, end)
-        quick_sort(lst, start, pivot - 1)
-        quick_sort(lst, pivot + 1, end)
-    return lst
+from typing import List
 
 
-def partition(lst, start, end):
-    pivot = lst[start]
-    left = start + 1
-    right = end
-    done = False
-    while not done:
-        while left <= right and lst[left] <= pivot:
-            left = left + 1
-        while lst[right] >= pivot and right >= left:
-            right = right - 1
-        if right < left:
-            done = True
-        else:
-            temp = lst[left]
-            lst[left] = lst[right]
-            lst[right] = temp
-    temp = lst[start]
-    lst[start] = lst[right]
-    lst[right] = temp
-    return right
+def quick_sort(dane: List[int], low: int = 0, high: int = None) -> List[int]:
+    if high is None:
+        high = len(dane) - 1
+
+    if low >= 0 and high >= 0 and low < high:
+        new_pivot = partition(dane, low, high)
+        quick_sort(dane, low, new_pivot)
+        quick_sort(dane, new_pivot + 1, high)
+
+    return dane
 
 
-def sort(lst):
-    return quick_sort(lst, 0, len(lst) - 1)
+def partition(dane: List[int], low: int, high: int) -> int:
+    pivot = dane[(high+low)//2]  # środkowy element jako pivot
+    left_index = low
+    right_index = high
 
+    while True:
+        while dane[left_index] < pivot:
+            left_index += 1
+        while dane[right_index] > pivot:
+            right_index -= 1
+        if left_index >= right_index:
+            return right_index
+        dane[left_index], dane[right_index] = dane[right_index], dane[left_index]
