@@ -1,8 +1,6 @@
 
 def quick_sort_middle(lst, low, high):
-    stack = []
-    stack.append(low)
-    stack.append(high)
+    stack = [low, high]
 
     while len(stack) != 0:
 
