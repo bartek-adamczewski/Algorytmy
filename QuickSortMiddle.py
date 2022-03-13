@@ -1,40 +1,33 @@
 
-def quick_sort_middle(lst, low, high):
-    stack = []
-    stack.append(low)
-    stack.append(high)
-
-    while len(stack) != 0:
-
-        hi = stack.pop()
-        lo = stack.pop()
-
-        pivot = middlePivotPartition(lst, lo, hi)
-
-        if pivot - 1 > lo:
-            stack.append(1)
-            stack.append(pivot - 1)
-
-        if pivot + 1 < hi:
-            stack.append(pivot + 1)
-            stack.append(hi)
+def quick_sort(lst, start, end):
+    if start < end:
+        pivot = partition(lst, start, end)
+        quick_sort(lst, start, pivot - 1)
+        quick_sort(lst, pivot + 1, end)
+    return lst
 
 
-def middlePivotPartition(lst, low, high):
-    middleIndex = low + (high - low) // 2
-    lst[high], lst[middleIndex] = lst[middleIndex], lst[high]
-    pivot = lst[high]
-    i = low - 1
-    for j in range(low, high):
-        if lst[j] <= pivot:
-            i += 1
-            lst[i], lst[j] = lst[j], lst[i]
-
-    lst[i + 1], lst[high] = lst[high], lst[i + 1]
-    return i + 1
+def partition(lst, start, end):
+    pivot = lst[start]
+    left = start + 1
+    right = end
+    done = False
+    while not done:
+        while left <= right and lst[left] <= pivot:
+            left = left + 1
+        while lst[right] >= pivot and right >= left:
+            right = right - 1
+        if right < left:
+            done = True
+        else:
+            temp = lst[left]
+            lst[left] = lst[right]
+            lst[right] = temp
+    temp = lst[start]
+    lst[start] = lst[right]
+    lst[right] = temp
+    return right
 
 
 def sort(lst):
-    high = len(lst)-1
-    quick_sort_middle(lst, 0, high)
-    return lst
+    return quick_sort(lst, 0, len(lst) - 1)
