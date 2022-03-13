@@ -12,7 +12,9 @@ def swap_in_heap(lst, n, i):
         lst[largest], lst[i] = lst[i], lst[largest]
         swap_in_heap(lst, n, largest)
 
-def heap_sort(lst, n):
+def heap_sort(lst, n = None):
+    if n is None:
+        n = len(lst)
     for i in range(n//2 - 1, -1, -1):        # znajduje największą wartość listy
         swap_in_heap(lst, n, i)
 
