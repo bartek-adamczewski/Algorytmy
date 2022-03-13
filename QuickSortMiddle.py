@@ -35,6 +35,6 @@ def middlePivotPartition(lst, low, high):
 
 
 def sort(lst):
-    high = len(lst) - 1
+    high = len(lst)-1
     quick_sort_middle(lst, 0, high)
     return lst
