@@ -1,6 +1,8 @@
+
 from matplotlib import pyplot as plt
 
 elements = [1, 5, 10, 50, 100]
+
 bubble_y = [0.000004251996870152652, 0.0000080439931480214, 0.000015366997104138136
     , 0.00027969399525318295, 0.0011377800110494718]
 insertion_y = [0.000023975997464731336, 0.000015204990631900728, 0.000014428995200432837
@@ -21,6 +23,7 @@ counting_y = [0.00000038708007195964454, 0.0013647763000335545, 0.00136187465977
 plt.xlabel('Ilość elementów')
 plt.ylabel('Czas wykonania(sekundy)')
 plt.title('Wydajność czasowa algorytmów')
+
 plt.plot(elements, bubble_y)
 plt.plot(elements, insertion_y)
 plt.plot(elements, selection_y)
@@ -29,6 +32,8 @@ plt.plot(elements, heap_y)
 plt.plot(elements, quick_middle_y)
 plt.plot(elements, quick_last_y)
 plt.plot(elements, counting_y)
+
 plt.legend(['Bubble Sort', 'Insertion Sort', 'Selection Sort', 'Merge Sort', 'Heap Sort'
                , 'Quick Sort Middle', 'Quick Sort Last', 'Counting Sort'])
+
 plt.show()
