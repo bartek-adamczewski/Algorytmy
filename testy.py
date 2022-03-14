@@ -8,7 +8,7 @@ from HeapSort import heap_sort
 from InsertionSort import insertion_sort
 from MergeSort import merge_sort
 from QuickSortLast import quick_sort
-from QuickSortMiddle import sort as quick_sort_middle
+from QuickSortMiddle import quick_sort as quick_sort_middle
 from SelectionSort import selection_sort
 
 
