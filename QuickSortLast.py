@@ -1,5 +1,7 @@
+import sys
 from typing import List
 
+sys.setrecursionlimit(100000)
 
 def quick_sort(dane: List[int], low: int = 0, high: int = None) -> List[int]:
     if high is None:
