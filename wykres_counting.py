@@ -33,6 +33,7 @@ plt.plot(elements, quick_sort_middle_b_y)
 plt.plot(elements, counting_sort_b_y)
 
 plt.legend(["QuickSort [1, 100*n]", "Counting Sort [1, 100*n]", "QuickSort [1, 0.01*n]", "Counting Sort [1, 0.01*n]"])
+# plt.legend(["QuickSort [1, 0.01*n]", "Counting Sort [1, 0.01*n]"])
 
 plt.show()
 
