@@ -1,13 +1,25 @@
+from typing import List
 
 from matplotlib import pyplot as plt
 
 elements = [500, 1000, 5000, 7500, 10000]
 
-merge_y = [0.001189729740144685, 0.0026483199602807873, 0.017068226439878344, 0.017068226439878344, 0.037146074519841935]
-heap_y = [0.0016630104801151901, 0.003833081100019626, 0.024795521040214225, 0.039857290840009225, 0.0544348677599919]
-quick_middle_y = [0.0012996451201615854, 0.001897449780080933, 0.010676370639994276, 0.013953267880133353, 0.01983376768010203]
-quick_last_y = [0.0005850769201060757, 0.0005850769201060757, 0.008679165979847312, 0.012978449759830256, 0.01988607386010699]
-counting_y = [0.0016195123200304807, 0.0018334542799857444, 0.003226163639919832, 0.004008975600008853, 0.004811029900156427]
+def read_sort(name: str, start: int) -> List[float]:
+    with open("wyniki.txt") as f:
+        for line in f:
+            if line.split(":")[0] != name:
+                continue
+            if "002:" in line:
+                break
+            skip = len(name.split(" "))
+            res = [float(i[:-1]) for i in line.strip().split(" ")[skip:]][start:]
+            return res
+
+merge_y = read_sort("merge sort", 5)
+heap_y = read_sort("heap sort", 5)
+quick_middle_y = read_sort("quick sort middle", 5)
+quick_last_y = read_sort("quick sort last", 5)
+counting_y = read_sort("counting sort", 5)
 
 plt.xlabel('Ilość elementów')
 plt.ylabel('Czas wykonania(sekundy)')

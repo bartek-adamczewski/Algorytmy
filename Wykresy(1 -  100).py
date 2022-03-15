@@ -1,24 +1,29 @@
+from typing import List
 
 from matplotlib import pyplot as plt
 
 elements = [1, 5, 10, 50, 100]
 
-bubble_y = [0.000004251996870152652, 0.0000080439931480214, 0.000015366997104138136
-    , 0.00027969399525318295, 0.0011377800110494718]
-insertion_y = [0.000023975997464731336, 0.000015204990631900728, 0.000014428995200432837
-    , 0.0001375720021314919, 0.00045275100274011493]
-selection_y = [0.000004506000550463796, 0.000009212002623826265, 0.000010709001799114048
-    , 0.00008770900603849441, 0.000283303001197055]
-merge_y = [0.00000034213997423648835, 0.000004285979957785457, 0.000012174219882581383
-    , 0.00008291309990454465, 0.0001893361398833804]
-heap_y = [0.0000006896999548189342, 0.000003453940153121948, 0.000008934139914344997
-    , 0.00009658131981268525, 0.0002338675397913903]
-quick_middle_y = [0.0000004449798143468797, 0.000004619599785655737, 0.000013305380125530064
-    , 0.00009956809983123093, 0.0002047797999694012]
-quick_last_y = [0.00000032446027034893634, 0.0000019319800776429475, 0.000004612019984051585
-    , 0.000038964099949225784, 0.00008716804004507139]
-counting_y = [0.00000038708007195964454, 0.0013647763000335545, 0.0013618746597785503
-    , 0.0014034193599945866, 0.001461446019820869]
+def read_sort(name: str, n: int) -> List[float]:
+    with open("wyniki.txt") as f:
+        for line in f:
+            if line.split(":")[0] != name:
+                continue
+            if "002:" in line:
+                break
+            skip = len(name.split(" "))
+            res = [float(i[:-1]) for i in line.strip().split(" ")[skip:]][:n + 1]
+            return res
+
+
+bubble_y = read_sort("bubble sort", 4)
+insertion_y = read_sort("insertion sort", 4)
+selection_y = read_sort("selection sort", 4)
+merge_y = read_sort("merge sort", 4)
+heap_y = read_sort("heap sort", 4)
+quick_middle_y = read_sort("quick sort middle", 4)
+quick_last_y = read_sort("quick sort last", 4)
+counting_y = read_sort("counting sort", 4)
 
 plt.xlabel('Ilość elementów')
 plt.ylabel('Czas wykonania(sekundy)')
@@ -33,7 +38,8 @@ plt.plot(elements, quick_middle_y)
 plt.plot(elements, quick_last_y)
 plt.plot(elements, counting_y)
 
-plt.legend(['Bubble Sort', 'Insertion Sort', 'Selection Sort', 'Merge Sort', 'Heap Sort'
-               , 'Quick Sort Middle', 'Quick Sort Last', 'Counting Sort'])
+plt.legend(['Bubble Sort', 'Insertion Sort', 'Selection Sort', 'Merge Sort', 'Heap Sort', 'Quick Sort Middle',
+            'Quick Sort Last', 'Counting Sort'])
 
-plt.show()
+if "__main__" == __name__:
+    plt.show()
